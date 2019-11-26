@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <title>HM Portal</title>
+    
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: "Roboto",sans-serif;
+        }
+        
+        .topbar{
+            position: fixed;
+            width: 100%;
+            height: 10%;
+            background: rgba(255, 159, 6,.8); 
+        }
+        
+        .fa-user-circle{
+            position: absolute;
+            margin-left: 83%;
+            font-size: 35px;
+            margin-top: 17px;
+            color: #34495e;
+            
+        }
+        
+        .fa-hospital-o {
+            font-size: 40px;
+            margin-top: 12px;
+            margin-left: 1.5%;
+            color: #34495e;
+        }
+        
+        #sidebar{
+            position: fixed;
+            width: 200px;
+            top: 10%;
+            height: 90%;
+            background: #34495e;
+            left: -200px;
+            transition: all 500ms linear;
+        }
+        
+        #sidebar.active{
+            left: 0px;
+        }
+        
+        #sidebar ul li{
+            color:rgba(230,230,230,0.9);
+            list-style: none;
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(100,100,100,0.9);
+            
+        }
+        
+        #sidebar ul li a{
+            text-decoration: none;
+            color: rgba(230,230,230,0.9);
+            transition: .2s;
+            cursor: pointer;
+        }
+        
+        #sidebar ul li a:hover{
+            color: #3498db;
+        }
+    
+        #sidebar .toggle-btn{
+            position: absolute;
+            left: 230px;
+            top: 20px;
+        }    
+        
+        #sidebar .toggle-btn span{
+            display: block;
+            width: 30px;
+            height: 5px;
+            background: #34495e;
+            margin: 5px 0px;
+        }
+/*       -------------------------------------------------------------------------------------------------------- */
+        .inner-layer{
+            display: none;
+        }
+        .inner-layer .img-1 {
+            text-align: center;
+            margin-left: 5%;
+            margin-top: -40px;
+        }
+
+        .inner-layer .img-2 {
+            height: 400px;
+            width: 2px;
+            margin-left: 44px;
+            margin-top: -1px;
+        }
+
+        .inner-layer {
+            position: absolute;
+            width: 70%;
+            height: 75%;
+            left: 20%;
+            margin: 5%;
+            margin-top: 10%;
+            background-color: rgba(52, 73, 94, 0.8);
+
+
+        }
+
+        .container {
+
+            padding: 5%;
+            margin-top: -60px;
+        }
+
+
+
+        .form-control {
+            margin-bottom: -1px;
+        }
+
+
+        .form-body {
+            padding: 5%;
+            margin-top: -20px;
+            width: 90%;
+        }
+
+        .form-row1 {
+            width: 45%;
+            float: left;
+
+        }
+
+
+        .form-row2 {
+            width: 50%;
+            float: right;
+            /*    display: inline-block;*/
+        }
+
+        .form-head {
+            padding-left: 3%;
+            padding-right: 3%;
+            padding-top: 4%;
+            padding-bottom: 4%;
+
+
+            text-align: center;
+        }
+
+        h5 {
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-family: "Roboto", sans-serif;
+            letter-spacing: .5px;
+
+        }
+
+        .form-head h2 {
+            font-family: "Roboto", sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: .5px;
+
+        }
+
+        .content {
+            width: 45%;
+            float: left;
+        }
+
+        .form-data {
+            background-color: #fff;
+            float: right;
+            width: 45%;
+            margin-top: -10px;
+        }
+
+
+
+        .form-data .form-body input {
+            width: 95%;
+            padding-bottom: 4px;
+            padding-top: 4px;
+            padding-left: 15px;
+            margin: 3px;
+            font-size: 12px;
+            color: black;
+            outline: none;
+            background: transparent;
+            border: 1px solid grey;
+            border-radius: 5px;
+
+
+        }
+
+        .form-data .form-body input:hover {
+            border-color: #3498db;
+            border-left-color: darkorange;
+            border-left-width: thick;
+            transition: .3s;
+
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding-bottom: 7px;
+            padding-top: 7px;
+            margin: 2px;
+            font-size: 16px;
+            color: white;
+            outline: none;
+            background-color: darkorange;
+            border: 1px solid grey;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            color: orange;
+            background-color: rgba(52, 73, 94, 0.8);
+            transition: .4s;
+        }
+        .ghjk span:hover{
+            color: #3498db;
+        }
+    
+    </style>
+</head>
+
+<body>
+   <div class="topbar">
+       <i class="fa fa-hospital-o" aria-hidden="true"></i>&nbsp;&nbsp;<span style="position: relative;top:-4px; font-size: 23px; font-weight: 500;color:#34495e; ">HM Portal</span>
+       <i class="fa fa-user-circle" aria-hidden="true"></i>
+       <span style="position:absolute;top:24px; font-size: 18px; font-weight: 500;color:#34495e; margin-left: 76%; ">username</span>
+       
+       <span style="position: relative;top:-4px; font-size: 23px; font-weight: 500;color:#34495e; margin-left: 50%; ">Doctor&nbsp;|&nbsp;Dashboard</span>
+   </div>
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+           <span></span>
+           <span></span>
+           <span></span>
+            
+            
+        </div>
+        <ul>
+            <li><i class="fa fa-home" aria-hidden="true"></i><a href="">&nbsp;&nbsp;Dashboard</a></li>
+<!--            <li class="ghjk" onclick="showed()" style="cursor: pointer;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;<span>Book Appointment</span></li>-->
+            <li><i class="fa fa-bars" aria-hidden="true"></i><a href="">&nbsp;&nbsp;Appointment History</a></li>
+        </ul>
+        
+    </div>
+   
+    
+    <script>
+    function toggleSidebar(){
+        document.getElementById("sidebar").classList.toggle('active');
+    }
+        function showed(){
+            document.getElementById('').style.display="block";
+            document.getElementById('').setAttribute('class','inner-layer animated zoomIn');
+        }
+    </script>
+</body>
+</html>
